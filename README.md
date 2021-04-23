@@ -19,11 +19,12 @@ ssh-keygen -t rsa -b 4096 -f smfi-git
 eval $(ssh-agent)
 ssh-add ~/.ssh/smfi-git
 ```
-3. Download and install the module
+3. Add the generated SSH public key to git's deployment key
+4. Download and install the module
 ```
 git clone git@github.com:smic-itss/puppet-lamp.git /etc/puppet/modules/lamp
 ```
-4. Apply
+5. Apply
 ```
 puppet apply -e "Package { allow_virtual => false} include lamp::main" 
 ```
