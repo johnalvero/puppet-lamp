@@ -13,11 +13,17 @@ yum install -y git puppet --enablerepo=epel
 rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 yum install -y git puppet --enablerepo=puppetlabs-products
 ```
-2. Download and install the module
+2. Setup git credentials
 ```
-git clone https://github.com/smic-itss/puppet-lamp.git /etc/puppet/modules/lamp
+ssh-keygen -t rsa -b 4096 -f smfi-git
+eval $(ssh-agent)
+ssh-add ~/.ssh/smfi-git
 ```
-3. Apply
+3. Download and install the module
+```
+git clone git@github.com:smic-itss/puppet-lamp.git /etc/puppet/modules/lamp
+```
+4. Apply
 ```
 puppet apply -e "Package { allow_virtual => false} include lamp::main" 
 ```
