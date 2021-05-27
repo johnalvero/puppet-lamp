@@ -28,4 +28,3 @@ git clone git@github.com:smic-itss/puppet-lamp.git /etc/puppet/modules/lamp
 ```
 puppet apply -e "Package { allow_virtual => false} include lamp::main" 
 ```
-# puppet-lamp
